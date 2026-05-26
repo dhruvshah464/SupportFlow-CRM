@@ -54,7 +54,7 @@ export function HomePage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       {/* Stats Row */}
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div data-tour="dashboard-stats" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <StatCard label="Total Tickets" value={stats.total} color="blue" icon={TicketIcon} />
           <StatCard label="Open" value={stats.open} color="emerald" icon={TicketIcon} />
           <StatCard label="In Progress" value={stats.in_progress} color="amber" icon={TicketIcon} />
@@ -81,7 +81,7 @@ export function HomePage() {
               <RefreshCwIcon className="w-4 h-4" />
               <span className="hidden sm:inline">Refresh</span>
             </button>
-            <Link to="/dashboard/new" className="btn-primary">
+            <Link to="/dashboard/new" data-tour="new-ticket" className="btn-primary">
               <PlusIcon className="w-4 h-4" />
               New Ticket
             </Link>
@@ -89,7 +89,7 @@ export function HomePage() {
         </div>
 
         {/* Filter Chips */}
-        <div className="flex flex-wrap gap-2">
+        <div data-tour="filters" className="flex flex-wrap gap-2">
           <div className="flex items-center gap-1.5">
             <FilterIcon className="w-3.5 h-3.5 text-gray-400" />
             <span className="text-xs text-gray-500 font-medium">Status:</span>
