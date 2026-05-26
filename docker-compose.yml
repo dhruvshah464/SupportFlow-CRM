@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./backend
+    container_name: supportflow-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Change this in production
+      - JWT_SECRET=dev-secret-key-change-in-production-32chars
+      - DATABASE_URL=sqlite:///./support_crm.db
+      - FRONTEND_URL=http://localhost:8080
+    volumes:
+      - ./backend:/app
+      - /app/venv/
+    restart: unless-stopped
+
+  web:
+    build: 
+      context: ./frontend
+      args:
+        - VITE_API_URL=http://localhost:8000
+    container_name: supportflow-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped

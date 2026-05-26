@@ -1,0 +1,44 @@
+# Render Blueprint — deploys the FastAPI backend and PostgreSQL database.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# HOW TO USE:
+#   1. Push this repo to GitHub.
+#   2. In Render Dashboard → New → Blueprint, connect your repo.
+#   3. Render reads this file and creates the services automatically.
+#   4. After deploy, set FRONTEND_URL to your Vercel URL in the
+#      Render Dashboard → supportflow-api → Environment.
+
+databases:
+  - name: supportflow-db
+    databaseName: supportflow
+    user: supportflow
+    plan: free          # Render's free PostgreSQL tier (expires after 90 days on free plan)
+    region: oregon      # Match this to your web service region
+
+services:
+  - type: web
+    name: supportflow-api
+    runtime: python
+    region: oregon
+    plan: free          # Render free Web Service (spins down after 15 min of inactivity)
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+
+    envVars:
+      # Automatically wired to the database above — no manual copy needed
+      - key: DATABASE_URL
+        fromDatabase:
+          name: supportflow-db
+          property: connectionString
+
+      # Render generates a secure random value for this automatically
+      - key: JWT_SECRET
+        generateValue: true
+
+      # Set this to your Vercel frontend URL after deploying the frontend.
+      # Example: https://your-app.vercel.app
+      # You can also set it to a comma-separated list for multiple origins.
+      - key: FRONTEND_URL
+        value: https://your-app.vercel.app   # ← update this after deploying frontend
