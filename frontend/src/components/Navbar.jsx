@@ -45,20 +45,22 @@ export function Navbar() {
 
             {user && (
               <div className="flex items-center gap-2 ml-3 pl-3 border-l border-zinc-200">
+                <span className="text-sm text-zinc-500 hidden sm:block">
+                  {user.name}
+                </span>
                 <button
                   onClick={() => {
                     navigate("/dashboard");
                     setTimeout(startTour, 100);
                   }}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors"
+                  className="flex items-center gap-1.5 px-2 py-2 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors"
                   title="Restart Product Tour"
                 >
                   <HelpCircleIcon className="w-4 h-4" />
-                  <span className="hidden md:inline">Tour</span>
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100 transition-colors"
+                  className="flex items-center gap-1.5 px-2 py-2 rounded-lg text-sm font-medium text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100 transition-colors"
                   title="Logout"
                 >
                   <LogOutIcon className="w-4 h-4" />

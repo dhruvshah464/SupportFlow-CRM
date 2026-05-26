@@ -4,7 +4,7 @@ A full-stack customer support ticketing system. Agents sign up, create tickets f
 
 Built with **React + Vite** on the frontend and **FastAPI + SQLAlchemy** on the backend.
 
-**Live:** [Frontend (Vercel)](https://supportflow-crm.vercel.app) · [Backend API (Render)](https://your-api.onrender.com)
+**Live:** [Frontend (Vercel)](https://supportflow-crm.vercel.app) · [Backend API (Render)](https://supportflow-api-p6vk.onrender.com/docs)
 
 ---
 
@@ -16,6 +16,7 @@ Built with **React + Vite** on the frontend and **FastAPI + SQLAlchemy** on the 
 - **Internal Notes** — Add timestamped notes to tickets for tracking investigation progress
 - **Search & Filters** — Full-text search across ticket ID, customer name, email, subject, and description. Filter by status and priority
 - **Dashboard Stats** — Live count of total/open/in-progress/closed tickets
+- **Interactive Onboarding** — Guided product tour for first-time users (spotlight highlights, step-by-step walkthrough)
 - **Responsive UI** — Works on desktop, tablet, and mobile
 
 ---
@@ -216,21 +217,10 @@ Frontend                          Backend
 
 ## Docs
 
-Additional documentation is in the `docs/` folder:
-
 | Document | Contents |
 |----------|----------|
-| `API_DOCUMENTATION.md` | Full endpoint reference with request/response examples |
-| `ARCHITECTURE.md` | System design, data flow, and component breakdown |
-| `DATABASE_SCHEMA.md` | Table definitions, relationships, and indexes |
-| `DEPLOYMENT_GUIDE.md` | Step-by-step Vercel + Render deployment |
-| `DESIGN_SYSTEM.md` | UI component library and style guide |
-| `FEATURES.md` | Detailed feature specifications |
-| `FUTURE_IMPROVEMENTS.md` | Roadmap and planned enhancements |
-| `PROJECT_STRUCTURE.md` | File-by-file code walkthrough |
-| `SECURITY.md` | Auth implementation and security considerations |
-| `USER_FLOW.md` | End-to-end user journey documentation |
-| `DEMO_SCRIPT.md` | Script for live demo walkthrough |
+| `docs/API_DOCUMENTATION.md` | Full endpoint reference with request/response examples |
+| `docs/DEPLOYMENT_GUIDE.md` | Step-by-step Vercel + Render deployment with Docker alternatives |
 
 ---
 
